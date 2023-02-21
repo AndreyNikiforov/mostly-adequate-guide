@@ -9,4 +9,23 @@
 // list.
 
 // joinMailingList :: Email -> Either String (IO ())
-const joinMailingList = undefined;
+// const joinMailingList = compose(
+//     map(compose(
+//         chain(emailBlast),
+//         addToMailingList,
+//     )),
+//     validateEmail,
+// );
+
+
+// updateList :: Email -> IO ()
+const updateList = compose(
+    chain(emailBlast),
+    addToMailingList,
+);
+
+// joinMailingList :: Email -> Either String (IO ())
+const joinMailingList = compose(
+    map(updateList),
+    validateEmail,
+);
